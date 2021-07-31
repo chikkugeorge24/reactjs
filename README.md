@@ -30,3 +30,4 @@ npm i --save react-router-dom
   - Set up automatic builds and deploys with GitHub? No
   - File build/index.html already exists. Overwrite? No
   - firebase deploy
+  - To disable hosting -> firebase hosting:disable
