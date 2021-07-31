@@ -18,3 +18,15 @@ npm i --save react-router-dom
   Multiple lazy components can be wrapped with the suspense component.
   
   It takes a fallback property that accepts the react elements you want to render as the lazy component is being loaded.
+  
+## Deployment on Firebase
+  
+  - npm install -g firebase-tools
+  - firebase login
+  - firebase init
+  - Choose **Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys**
+  - Choose **build** as the public directory
+  - Configure as a single-page app (rewrite all urls to /index.html)
+  - Set up automatic builds and deploys with GitHub? No
+  - File build/index.html already exists. Overwrite? No
+  - firebase deploy
