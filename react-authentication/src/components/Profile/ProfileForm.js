@@ -1,10 +1,14 @@
 import { useRef, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import AuthContext from "../../store/auth-context";
 import classes from "./ProfileForm.module.css";
 
 const ProfileForm = () => {
   const passwordInputRef = useRef();
   const authContext = useContext(AuthContext);
+  const history = useHistory();
+
   const submitHandler = async event => {
     event.preventDefault();
     const newPassword = passwordInputRef.current.value;
@@ -25,6 +29,7 @@ const ProfileForm = () => {
       );
       const data = await response.json();
       if (response.ok) {
+        history.replace("/");
         return data;
       } else {
         let errorMessage = "Authentication failed!";
