@@ -1,22 +1,62 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
+let logoutTimer;
 const AuthContext = createContext({
   token: "",
   isLoggedIn: false,
-  login: token => {},
+  login: (token, expiresIn) => {},
   logout: () => {}
 });
+
+const calculateRemainingTime = expiresIn => {
+  const currentTime = new Date().getTime();
+  const expiresTime = new Date(expiresIn).getTime();
+  const remainingTime = expiresTime - currentTime;
+  return remainingTime;
+};
+
+const restoreToken = () => {
+  const storedToken = localStorage.getItem("token");
+  const storedExpirationTime = localStorage.getItem("expirationTime");
+  const remainingTime = calculateRemainingTime(storedExpirationTime);
+  if (remainingTime <= 60000) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expirationTime");
+    return null;
+  }
+  return {
+    token: storedToken,
+    duration: remainingTime
+  };
+};
 export const AuthContextProvider = props => {
-  const initialToken = localStorage.getItem("token");
+  const tokenData = restoreToken();
+  let initialToken;
+  if (tokenData) {
+    initialToken = tokenData.token;
+  }
   const [token, setToken] = useState(initialToken);
   const isUserLoggedIn = !!token;
-  const loginHandler = token => {
-    setToken(token);
-    localStorage.setItem("token", token);
-  };
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     setToken(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("expirationTime");
+
+    if (logoutTimer) {
+      clearTimeout(logoutTimer);
+    }
+  }, []);
+  const loginHandler = (token, expiresIn) => {
+    setToken(token);
+    localStorage.setItem("token", token);
+    localStorage.setItem("expirationTime", expiresIn);
+    const remainingDuration = calculateRemainingTime(expiresIn);
+    logoutTimer = setTimeout(logoutHandler, remainingDuration);
   };
+  useEffect(() => {
+    if (tokenData) {
+      logoutTimer = setTimeout(logoutHandler, tokenData.duration);
+    }
+  }, [tokenData, logoutHandler]);
   const contextValue = {
     token: token,
     isLoggedIn: isUserLoggedIn,

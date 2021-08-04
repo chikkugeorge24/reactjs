@@ -43,7 +43,10 @@ const AuthForm = () => {
       setIsLoading(false);
       const data = await response.json();
       if (response.ok) {
-        authContext.login(data.idToken);
+        const expiresTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        );
+        authContext.login(data.idToken, expiresTime.toISOString());
         history.replace("/");
         return data;
       } else {
