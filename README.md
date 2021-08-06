@@ -31,3 +31,29 @@ npm i --save react-router-dom
   - File build/index.html already exists. Overwrite? No
   - firebase deploy
   - To disable hosting -> firebase hosting:disable
+
+## React Transition Group
+
+- React Transition Group is not an animation library like React-Motion, it does not animate styles by itself. Instead it exposes transition stages, manages classes and group elements and manipulates the DOM in useful ways
+- **npm install react-transition-group --save**
+- Transition Component
+
+     - The Transition component lets you describe a transition from one component state to another over time with a simple declarative API.
+     - It's used to animate the mounting and unmounting of a component, but can also be used to describe in-place transition states as well.
+     - By default the Transition component does not alter the behavior of the component it renders, it only tracks "enter" and "exit" states for the components.
+     - There are 4 main states a Transition can be in:
+     
+          - entering
+          - entered
+          - exiting
+          - exited
+     - Transition events:
+           
+          - onEnter
+          - onEntering
+          - onEntered
+          - onExit
+          - onExiting
+          - onExited
+
+
