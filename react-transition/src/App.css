@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.fade-slide-enter {
+  opacity: 0;
+}
+
+.fade-slide-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.fade-slide-exit {
+  opacity: 1;
+}
+.fade-slide-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
