@@ -55,5 +55,34 @@ npm i --save react-router-dom
           - onExit
           - onExiting
           - onExited
+        
+ - CSSTransition Component
+      
+      - CSSTransition applies a pair of class names during the appear, enter, and exit states of the transition.
+      - The first class is applied and then a second *-active class in order to activate the CSS transition. After the transition, matching *-done class names are applied to persist the transition state. 
+      - It's built upon the Transition component, so it inherits all of its props.
+      - The animation classNames applied to the component as it appears, enters, exits or has finished the transition. A single name can be provided, which will be suffixed for each stage. Eg:classNames="fade" applies:
+
+           - fade-appear, fade-appear-active, fade-appear-done
+           - fade-enter, fade-enter-active, fade-enter-done
+           - fade-exit, fade-exit-active, fade-exit-done
+
+- TransitionGroup Component
+
+     - The TransitionGroup component manages a set of transition components (Transition and CSSTransition) in a list. 
+     - TransitionGroup renders a div by default. You can change this behavior by providing a component prop.
+      
+## React Animation Packages
+
+- React Motion
+
+     - npm i react-motion
+ 
+- React Move
+      
+     - npm i react-move
+- React Router Transition
+
+     - npm i react-router-transition
 
 
