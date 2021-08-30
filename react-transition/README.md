@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+## React Transition Group
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React Transition Group is not an animation library like React-Motion, it does not animate styles by itself. Instead it exposes transition stages, manages classes and group elements and manipulates the DOM in useful ways
+- **npm install react-transition-group --save**
+- Transition Component
 
-## Available Scripts
+     - The Transition component lets you describe a transition from one component state to another over time with a simple declarative API.
+     - It's used to animate the mounting and unmounting of a component, but can also be used to describe in-place transition states as well.
+     - By default the Transition component does not alter the behavior of the component it renders, it only tracks "enter" and "exit" states for the components.
+     - There are 4 main states a Transition can be in:
+     
+          - entering
+          - entered
+          - exiting
+          - exited
+     - Transition events:
+           
+          - onEnter
+          - onEntering
+          - onEntered
+          - onExit
+          - onExiting
+          - onExited
+        
+ - CSSTransition Component
+      
+      - CSSTransition applies a pair of class names during the appear, enter, and exit states of the transition.
+      - The first class is applied and then a second *-active class in order to activate the CSS transition. After the transition, matching *-done class names are applied to persist the transition state. 
+      - It's built upon the Transition component, so it inherits all of its props.
+      - The animation classNames applied to the component as it appears, enters, exits or has finished the transition. A single name can be provided, which will be suffixed for each stage. Eg:classNames="fade" applies:
 
-In the project directory, you can run:
+           - fade-appear, fade-appear-active, fade-appear-done
+           - fade-enter, fade-enter-active, fade-enter-done
+           - fade-exit, fade-exit-active, fade-exit-done
 
-### `yarn start`
+- TransitionGroup Component
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+     - The TransitionGroup component manages a set of transition components (Transition and CSSTransition) in a list. 
+     - TransitionGroup renders a div by default. You can change this behavior by providing a component prop.
+      
+## React Animation Packages
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React Motion
 
-### `yarn test`
+     - npm i react-motion
+ 
+- React Move
+      
+     - npm i react-move
+- React Router Transition
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+     - npm i react-router-transition
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
