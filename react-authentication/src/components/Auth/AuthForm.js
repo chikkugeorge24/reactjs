@@ -12,21 +12,19 @@ const AuthForm = () => {
   const history = useHistory();
 
   const switchAuthModeHandler = () => {
-    setIsLogin(prevState => !prevState);
+    setIsLogin((prevState) => !prevState);
   };
 
-  const submitHandler = async event => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBhze8aUPB1vgWjjM7kn2mhCDa0u2IZ43M";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.AUTH_KEY}`;
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBhze8aUPB1vgWjjM7kn2mhCDa0u2IZ43M";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.AUTH_KEY}`;
     }
     try {
       const response = await fetch(url, {
@@ -34,11 +32,11 @@ const AuthForm = () => {
         body: JSON.stringify({
           email: enteredEmail,
           password: enteredPassword,
-          returnSecureToken: true
+          returnSecureToken: true,
         }),
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       });
       setIsLoading(false);
       const data = await response.json();
