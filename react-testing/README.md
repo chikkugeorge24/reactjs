@@ -56,5 +56,7 @@ Install the below dependencies
 
     **checkPropTypes(component.propTypes, expectedProps, "props", component.name)**
 
-  
+ - Reference
+ 
+   https://medium.com/asos-techblog/how-to-test-your-react-redux-application-48d90481a253
     
